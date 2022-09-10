@@ -6,13 +6,13 @@ body {
     text-align: center;
 }
 
-input {
+/* input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #5f9341;
     margin-bottom: 4px;
-}
+} */
 
 button {
     background: #5f9341;
