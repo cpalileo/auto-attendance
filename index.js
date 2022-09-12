@@ -8,14 +8,20 @@ fetch("https://southsuttercs.org/iemschools/website-login")
   })
   .then(function (data) {
     openWindow();
-    fillforms(data);
+    fillForms(data);
     console.log(data);
   })
   .catch(function (err) {
     console.warn("Error ", err);
   });
 
-const startBtn = document.getElementById("start-btn");
+function fillForms(data) {
+  console.log(
+    "This is the fillForms function. You will use this function to input the credentials into the login fields."
+  );
+}
+
+// const startBtn = document.getElementById("start-btn");
 
 // function openWindow() {
 //   window.open(

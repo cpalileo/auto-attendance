@@ -4,7 +4,7 @@ document.getElementById("start-btn").addEventListener("click", function () {
   let valueUsername = document.getElementById("username").value;
   let valuePassword = document.getElementById("password").value;
 
-  chrome.tabs.executeScript(
+  chrome.scripting.executeScript(
     {
       // Send credentials to main script
       code: `var value = ${(valueUsername, valuePassword)};`,
@@ -15,8 +15,10 @@ document.getElementById("start-btn").addEventListener("click", function () {
         "chromeTab"
       );
       //run the script in the index.js
-      chrome.tabs.executeScript({
-        file: "index.js",
+      const tabId = getTabId();
+      chrome.scripting.executeScript({
+        target: { tabId: id, allFrames: true },
+        files: ["content_scripts/cscript.js"],
       });
     }
   );
