@@ -2,7 +2,6 @@
 
 # Chrome Extension to that takes attendance for online school with the click of a button.
 
-# Auto attendance feature not yet functioning.
 
 # Icon Credit
 
