@@ -3,6 +3,9 @@
   "description": "Automatically marks your attendance",
   "version": "1.0",
   "manifest_version": 3,
+  "action": {
+    "default_icon": "icon.png"
+  },
   "background": {
     "service_worker": "thanks/script.js"
   }
