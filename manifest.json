@@ -3,10 +3,18 @@
   "description": "Automatically marks your attendance",
   "version": "1.0",
   "manifest_version": 3,
-  "action": {
-    "default_icon": "icon.png"
-  },
   "background": {
     "service_worker": "thanks/script.js"
-  }
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "ext/index.html"
+  },
+  "content_script": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["app.js"]
+    }
+  ],
+  "permissions": ["storage", "activeTab", "declarativeContent"]
 }
