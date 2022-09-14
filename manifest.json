@@ -1,0 +1,9 @@
+{
+  "name": "autoAttendance",
+  "description": "Automatically marks your attendance",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "thanks/script.js"
+  }
+}
