@@ -1,10 +1,11 @@
-document.getElementById("username").addEventListener("click", () => {
+document.getElementById("btn-login").addEventListener("click", () => {
+  console.log("Login Button Clicked");
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
       tabs[0].id,
       {
-        username: getElementById("email").value,
-        password: getElementById("pass").value,
+        email: document.getElementById("email").value,
+        pass: document.getElementById("pass").value,
       },
       function (response) {
         console.log(response.status);
@@ -13,11 +14,11 @@ document.getElementById("username").addEventListener("click", () => {
   });
 });
 
-document.getElementById("save").addEventListener("click", () => {
+document.getElementById("btn-save").addEventListener("click", () => {
   chrome.storage.sync.set(
     {
-      username: getElementById("email").value,
-      password: getElementById("pass").value,
+      email: getElementById("email").value,
+      pass: getElementById("pass").value,
     },
     function () {
       console.log("Saved");

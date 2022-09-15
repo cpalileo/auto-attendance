@@ -10,7 +10,7 @@
     "default_icon": "icon.png",
     "default_popup": "ext/index.html"
   },
-  "content_script": [
+  "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["app.js"]
