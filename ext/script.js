@@ -1,4 +1,5 @@
-document.getElementById("btn-login").addEventListener("click", () => {
+//this didn't work
+function login() {
   console.log("Login Button Clicked");
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
@@ -12,7 +13,7 @@ document.getElementById("btn-login").addEventListener("click", () => {
       }
     );
   });
-});
+}
 
 document.getElementById("btn-save").addEventListener("click", () => {
   chrome.storage.sync.set(
