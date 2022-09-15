@@ -1,21 +1,20 @@
-//this didn't work
-function login() {
+document.getElementById("btn-login").addEventListener("click", () => {
   console.log("Login Button Clicked");
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
       tabs[0].id,
       {
-        email: document.getElementById("email").value,
-        pass: document.getElementById("pass").value,
+        email: document.getElementById("user-email").value,
+        pass: document.getElementById("user-pass").value,
       },
       function (response) {
         console.log(response.status);
       }
     );
   });
-}
+});
 
-document.getElementById("btn-save").addEventListener("click", () => {
+document.getElementById("btn-save").addEventListener(click, () => {
   chrome.storage.sync.set(
     {
       email: getElementById("email").value,
