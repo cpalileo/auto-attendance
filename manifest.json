@@ -16,5 +16,5 @@
       "js": ["app.js"]
     }
   ],
-  "permissions": ["storage", "activeTab", "declarativeContent"]
+  "permissions": ["storage", "activeTab", "scripting", "declarativeContent"]
 }
