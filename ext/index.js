@@ -1,5 +1,5 @@
 document.getElementById("btn-login").addEventListener("click", () => {
-  console.log("Login Button Clicked");
+  // console.log("Checkpoint");
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
       tabs[0].id,
@@ -14,16 +14,16 @@ document.getElementById("btn-login").addEventListener("click", () => {
   });
 });
 
-document.getElementById("btn-save").addEventListener(click, () => {
-  chrome.storage.sync.set(
-    {
-      email: getElementById("email").value,
-      pass: getElementById("pass").value,
-    },
-    function () {
-      console.log("Saved");
-    }
-  );
-});
+// document.getElementById("btn-save").addEventListener(click, () => {
+//   chrome.storage.sync.set(
+//     {
+//       email: getElementById("email").value,
+//       pass: getElementById("pass").value,
+//     },
+//     function () {
+//       console.log("Saved");
+//     }
+//   );
+// });
 
 //Refactoring needed.  Have login credentials auto save and auto load with click of one button
