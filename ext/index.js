@@ -14,7 +14,8 @@ document.getElementById("btn-save").addEventListener("click", () => {
       pass: document.getElementById("pass").value,
     },
     function () {
-      console.log("Email and Password Saved " + email + " " + pass);
+      // NEED TO DELETE THIS CONSOLE LOG WHEN GOING LIVE
+      console.log("Email and Password Saved " + email.value + " " + pass.value);
     }
   );
 });
