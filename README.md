@@ -1,12 +1,16 @@
 # auto-attendance
 
-## Chrome Extension to that takes attendance for online school with the click of a button.
+## Description:
 
-## Current Features: Loads previous credentials, Auto fills and auto saves with click of start button.
+Chrome Extension to that takes attendance for online school with the click of a button.
 
-## Features in Progress: <a href="https://github.com/cpalileo/auto-attendance/issues">See GitHub Issues Tab</a>
+## Current Features:
 
-### Longer Term Features to work on:
+Loads previous credentials, Auto fills and auto saves with click of start button.
+
+## Features in Progress:
+
+<a href="https://github.com/cpalileo/auto-attendance/issues">See GitHub Issues Tab</a>
 
 #### Icon Credit:
 
