@@ -12,7 +12,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*.southsuttercs.org/*"],
+      "matches": [
+        "https://southsuttercs.org/*",
+        "https://parentportal.ieminc.org/*"
+      ],
       "js": ["app.js"]
     }
   ],

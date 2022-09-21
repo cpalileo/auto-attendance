@@ -4,6 +4,7 @@ const autoFill = () => {
     chrome.tabs.sendMessage(tabs[0].id, {
       email: document.getElementById("email").value,
       pass: document.getElementById("pass").value,
+      login: document.querySelector("button[type='submit']"),
     });
   });
 };
@@ -16,14 +17,10 @@ const autoSave = () => {
   });
 };
 
-// Function to auto click login button
-
-//Attempt
-// const loginDiv = document.getElementsByClassName(".form-validate");
-// const clickLogin = loginDiv.getElementsByTagName("button");
-
-//Attempt
-const submitButton = document.getElementsByTagName("button")[0];
+// Function to auto click login button.  Need to focus on chrome.tabs **researching**
+const autoClick = () => {
+  login.click();
+};
 
 // Function to auto load last used login credentials
 function autoLoad() {
@@ -40,10 +37,11 @@ autoLoad();
 document.getElementById("btn-start").addEventListener("click", () => {
   autoFill();
   autoSave();
-  submitButton.click(),
-    function (response) {
-      console.log(response.status);
-    };
+  autoClick();
+  // ,
+  //   function (response) {
+  //     console.log(response.status);
+  //   };
 });
 // document.getElementsByClassName("btn-primary")
 
