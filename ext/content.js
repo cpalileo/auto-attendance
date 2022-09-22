@@ -18,9 +18,7 @@ const autoSave = () => {
 };
 
 // Function to auto click login button.  Need to focus on chrome.tabs **researching**
-const autoClick = () => {
-  login.click();
-};
+const subBtn = document.getElementsByTagName("button")[0];
 
 // Function to auto load last used login credentials
 function autoLoad() {
@@ -37,12 +35,5 @@ autoLoad();
 document.getElementById("btn-start").addEventListener("click", () => {
   autoFill();
   autoSave();
-  autoClick();
-  // ,
-  //   function (response) {
-  //     console.log(response.status);
-  //   };
+  subBtn.click();
 });
-// document.getElementsByClassName("btn-primary")
-
-//Refactoring needed.  Have login credentials auto save and auto load with click of one button
