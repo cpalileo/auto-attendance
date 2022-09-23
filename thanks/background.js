@@ -4,3 +4,4 @@ chrome.runtime.onInstalled.addListener(async () => {
   let tab = await chrome.tabs.create({ url });
   console.log(`Created tab ${tab.id}`);
 });
+

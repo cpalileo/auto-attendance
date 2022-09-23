@@ -1,3 +1,19 @@
+// Function to auto navigate to school website
+function autoNav() {
+  chrome.tabs.update({
+    url: "https://southsuttercs.org/iemschools/website-login",
+  });
+}
+
+// Function to auto load last used login credentials
+function autoLoad() {
+  chrome.storage.sync.get(["email", "pass"], function (result) {
+    (document.getElementById("email").value = result.email),
+      (document.getElementById("pass").value = result.pass);
+  });
+}
+
+
 // Auto fill login credentials function
 const autoFill = () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -20,20 +36,17 @@ const autoSave = () => {
 // Function to auto click login button.  Need to focus on chrome.tabs **researching**
 const subBtn = document.getElementsByTagName("button")[0];
 
-// Function to auto load last used login credentials
-function autoLoad() {
-  chrome.storage.sync.get(["email", "pass"], function (result) {
-    (document.getElementById("email").value = result.email),
-      (document.getElementById("pass").value = result.pass);
-  });
-}
-
 // Upon load envoke function to autoload credentials
 autoLoad();
 
 // Event listener for extension button
 document.getElementById("btn-start").addEventListener("click", () => {
+  autoNav();
+  window.onload = function exampleFunction() {
+    console.log("The Script will load now.");
+  };
   autoFill();
   autoSave();
   subBtn.click();
+  // window.close();
 });

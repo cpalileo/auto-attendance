@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       (document.getElementById("password").value = request.pass),
       document.querySelector("button").click();
   } catch (error) {
-    console.log({ cause: error });
+    console.log({ error });
     sendResponse({ status: "Exception occurred" });
   }
 });
