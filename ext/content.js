@@ -12,8 +12,6 @@ function autoLoad() {
       (document.getElementById("pass").value = result.pass);
   });
 }
-
-
 // Auto fill login credentials function
 const autoFill = () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -42,11 +40,7 @@ autoLoad();
 // Event listener for extension button
 document.getElementById("btn-start").addEventListener("click", () => {
   autoNav();
-  window.onload = function exampleFunction() {
-    console.log("The Script will load now.");
-  };
   autoFill();
   autoSave();
   subBtn.click();
-  // window.close();
 });
