@@ -1,15 +1,15 @@
-// Function to auto navigate to school website
-function autoNav() {
-  chrome.tabs.update({
-    url: "https://southsuttercs.org/iemschools/website-login",
-  });
-}
-
 // Function to auto load last used login credentials
 function autoLoad() {
   chrome.storage.sync.get(["email", "pass"], function (result) {
     (document.getElementById("email").value = result.email),
       (document.getElementById("pass").value = result.pass);
+  });
+}
+
+// Function to auto navigate to school website
+function autoNav() {
+  chrome.tabs.update({
+    url: "https://southsuttercs.org/iemschools/website-login",
   });
 }
 // Auto fill login credentials function
@@ -34,13 +34,46 @@ const autoSave = () => {
 // Function to auto click login button.  Need to focus on chrome.tabs **researching**
 const subBtn = document.getElementsByTagName("button")[0];
 
+const portalBtn = document.getElementById("portal");
+
+function dailyEngage() {
+  chrome.tabs.update({
+    url: "https://parentportal.ieminc.org/daily_engagement",
+  });
+}
+
+const attendBtn = document.getElementsByTagName("td")[0];
+
+const attendSubmit = document.getElementById("attSubmit");
+
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
+const loginSteps = () => {
+  autoFill();
+  autoSave();
+  subBtn.click();
+};
+
+const portalNav = () => {
+  portalBtn.click();
+  dailyEngage.click();
+};
+
+const takeAttendance = () => {
+  attendBtn.click();
+  attendSubmit.click();
+};
+
 // Upon load envoke function to autoload credentials
 autoLoad();
 
 // Event listener for extension button
-document.getElementById("btn-start").addEventListener("click", () => {
+document.getElementById("btn-start").addEventListener("click", async () => {
   autoNav();
-  autoFill();
-  autoSave();
-  subBtn.click();
+  await delay(3000);
+  loginSteps();
+  await delay(3000);
+  portalNav();
+  await delay(3000);
+  takeAttendance();
 });
