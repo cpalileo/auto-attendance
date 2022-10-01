@@ -77,3 +77,5 @@ document.getElementById("btn-start").addEventListener("click", async () => {
   await delay(3000);
   takeAttendance();
 });
+
+//
