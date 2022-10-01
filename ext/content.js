@@ -11,7 +11,9 @@ function autoNav() {
   chrome.tabs.update({
     url: "https://southsuttercs.org/iemschools/website-login",
   });
+  setTimeout(() => {}, 5000);
 }
+
 // Auto fill login credentials function
 const autoFill = () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -36,11 +38,11 @@ const subBtn = document.getElementsByTagName("button")[0];
 
 const portalBtn = document.getElementById("portal");
 
-function dailyEngage() {
+const dailyEngage = () => {
   chrome.tabs.update({
     url: "https://parentportal.ieminc.org/daily_engagement",
   });
-}
+};
 
 const attendBtn = document.getElementsByTagName("td")[0];
 
@@ -56,7 +58,7 @@ const loginSteps = () => {
 
 const portalNav = () => {
   portalBtn.click();
-  dailyEngage.click();
+  dailyEngage();
 };
 
 const takeAttendance = () => {
@@ -69,11 +71,38 @@ autoLoad();
 
 // Event listener for extension button
 document.getElementById("btn-start").addEventListener("click", async () => {
-  autoNav();
-  await delay(3000);
-  loginSteps();
-  await delay(3000);
-  portalNav();
-  await delay(3000);
-  takeAttendance();
+  setTimeout(autoNav, 5000);
+  // await delay(5000);
+  setTimeout(loginSteps, 5000);
+  // await delay(5000);
+  setTimeout(portalNav, 5000);
+  // await delay(5000);
+  setTimeout(takeAttendance, 5000);
 });
+
+// Add a new Promise to a new timeout for logging timeout so it will continue only after this is done.
+
+// var i = 3
+// var p = Promise.resolve(i)
+// while (i > 0) {
+//   (i => {
+//     p = p.then(() => {
+//       return new Promise((resolve) => {
+//         console.log('start', i)
+//         setTimeout(() => {
+//           return new Promise((resolve) => {
+//             setTimeout(() => {
+//           	console.log('timeout')
+//             	resolve()
+//             }, 1000)
+//           }).then(() => {
+//           	console.log('end', i)
+//           	resolve()
+//           })
+//         }, 1000)
+//       })
+//     })
+//   })(i)
+//   i--
+// }
+// p = p.then(data => console.log('execution ends'))
