@@ -11,8 +11,18 @@ function autoNav() {
   chrome.tabs.update({
     url: "https://southsuttercs.org/iemschools/website-login",
   });
-  setTimeout(() => {}, 5000);
+  if (document.readyState == "loading") {
+    // still loading, wait for the event
+    document.addEventListener("DOMContentLoaded", autoFill);
+  } else {
+    // DOM is ready!
+    autoFill();
+  }
 }
+
+// const loginSteps = () => {
+//   autoFill();
+// };
 
 // Auto fill login credentials function
 const autoFill = () => {
@@ -23,6 +33,7 @@ const autoFill = () => {
       login: document.querySelector("button[type='submit']"),
     });
   });
+  autoSave();
 };
 
 // Auto save login credentials function
@@ -31,54 +42,59 @@ const autoSave = () => {
     email: document.getElementById("email").value,
     pass: document.getElementById("pass").value,
   });
+  // subBtn.click();
 };
 
-// Function to auto click login button.  Need to focus on chrome.tabs **researching**
-const subBtn = document.getElementsByTagName("button")[0];
+// // Function to auto click login button.  Need to focus on chrome.tabs **researching**
+// const subBtn = document.getElementsByTagName("button")[0];
 
-const portalBtn = document.getElementById("portal");
+// const portalBtn = document.getElementById("portal");
 
-const dailyEngage = () => {
-  chrome.tabs.update({
-    url: "https://parentportal.ieminc.org/daily_engagement",
-  });
-};
+// const dailyEngage = () => {
+//   chrome.tabs.update({
+//     url: "https://parentportal.ieminc.org/daily_engagement",
+//   });
+//   portalNav();
+// };
 
-const attendBtn = document.getElementsByTagName("td")[0];
+// const attendBtn = document.getElementsByTagName("td")[0];
 
-const attendSubmit = document.getElementById("attSubmit");
+// const attendSubmit = document.getElementById("attSubmit");
 
-const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+// const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
-const loginSteps = () => {
-  autoFill();
-  autoSave();
-  subBtn.click();
-};
+// const portalNav = () => {
+//   portalBtn.click();
+//   dailyEngage();
+// };
 
-const portalNav = () => {
-  portalBtn.click();
-  dailyEngage();
-};
-
-const takeAttendance = () => {
-  attendBtn.click();
-  attendSubmit.click();
-};
+// const takeAttendance = () => {
+//   attendBtn.click();
+//   attendSubmit.click();
+// };
 
 // Upon load envoke function to autoload credentials
 autoLoad();
-
 // Event listener for extension button
 document.getElementById("btn-start").addEventListener("click", async () => {
-  setTimeout(autoNav, 5000);
-  // await delay(5000);
-  setTimeout(loginSteps, 5000);
-  // await delay(5000);
-  setTimeout(portalNav, 5000);
-  // await delay(5000);
-  setTimeout(takeAttendance, 5000);
+  autoNav();
 });
+
+// Promise
+// let p = new promise((resolve, reject) => {
+//   let a = 1 + 1;
+//   if (a === 2) {
+//     resolve("Success");
+//   } else {
+//     reject("Fail");
+//   }
+// });
+
+// p.then((message) => {
+//   console.log("The then message is: " + message);
+// }).catch((message) => {
+//   console.log("The catch message is: " + message);
+// });
 
 // Add a new Promise to a new timeout for logging timeout so it will continue only after this is done.
 
